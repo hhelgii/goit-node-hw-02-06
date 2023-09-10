@@ -1,19 +1,20 @@
 import express from "express";
-import Joi from "joi";
+
 import contactsService from "../../models/contacts/contacts.js";
 import { HttpError } from "../../helpers/index.js";
+import contactsSchema from '../../schemas/contactsSchema.js'
 const contactsRouter = express.Router();
-const contactsSchema = Joi.object({
-  name: Joi.string().required().messages({
-    "any.required": 'missing required "name" field',
-  }),
-  email: Joi.string().required().messages({
-    "any.required": 'missing required "email" field',
-  }),
-  phone: Joi.string().required().messages({
-    "any.required": 'missing required "phone" field',
-  }),
-});
+// const contactsSchema = Joi.object({
+//   name: Joi.string().required().messages({
+//     "any.required": 'missing required "name" field',
+//   }),
+//   email: Joi.string().required().messages({
+//     "any.required": 'missing required "email" field',
+//   }),
+//   phone: Joi.string().required().messages({
+//     "any.required": 'missing required "phone" field',
+//   }),
+// });
 
 contactsRouter.get("/", async (req, res, next) => {
   try {
